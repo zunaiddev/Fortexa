@@ -61,6 +61,8 @@
             </div>
         </div>
     </div>
+
+    <!--    Right panel-->
     <div class="col-span-1">
         <div class="flex items-center justify-center h-full bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 p-8">
             <div class="text-card-foreground flex flex-col gap-6 rounded-xl border w-full max-w-md bg-slate-800/90 backdrop-blur-sm border-slate-600/50 shadow-2xl shadow-black/50"
@@ -68,37 +70,22 @@
                 <div class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6 text-center space-y-4"
                      data-slot="card-header">
                     <div class="flex items-center justify-center space-x-2">
-                        <svg aria-hidden="true" class="lucide lucide-shield w-6 h-6 text-teal-400"
-                             fill="none" height="24"
-                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                             stroke-width="2"
-                             viewBox="0 0 24 24" width="24"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
-                        </svg>
                         <h4 class="text-2xl text-white" data-slot="card-title">Create Your Secure
                             Account</h4></div>
                     <p class="text-gray-300" data-slot="card-description">Join thousands of users who trust
                         Fortexa for secure communication</p></div>
                 <div class="px-6 [&amp;:last-child]:pb-6 space-y-6" data-slot="card-content">
                     <form class="space-y-5">
-                        <div class="space-y-2"><label
-                                class="gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-gray-200 flex items-center space-x-2"
-                                data-slot="label"
-                                for="fullName">
-                            <svg aria-hidden="true" class="lucide lucide-user w-4 h-4 text-gray-400"
-                                 fill="none"
-                                 height="24" stroke="currentColor" stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24"
-                                 width="24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                            <span>Full Name</span></label><input
+                        <div class="space-y-2">
+                            <label
+                                    class="gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-gray-200 flex items-center space-x-2"
+                                    data-slot="label"
+                                    for="name">
+
+                                <span>Full Name</span></label><input
                                 class="file:text-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-slate-700/70 border-slate-600/70 text-white placeholder:text-gray-400 focus:border-teal-400 focus:ring-teal-400/20"
                                 data-slot="input"
-                                id="fullName"
+                                id="name"
                                 placeholder="Enter your full name"
                                 required=""
                                 type="text" value=""></div>
@@ -106,15 +93,6 @@
                                 class="gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-gray-200 flex items-center space-x-2"
                                 data-slot="label"
                                 for="username">
-                            <svg aria-hidden="true" class="lucide lucide-at-sign w-4 h-4 text-gray-400"
-                                 fill="none"
-                                 height="24" stroke="currentColor" stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24"
-                                 width="24" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="4"></circle>
-                                <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"></path>
-                            </svg>
                             <span>Unique Username</span></label><input
                                 class="file:text-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-slate-700/70 border-slate-600/70 text-white placeholder:text-gray-400 focus:border-teal-400 focus:ring-teal-400/20"
                                 data-slot="input"
@@ -126,25 +104,24 @@
                                 class="gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-gray-200 flex items-center space-x-2"
                                 data-slot="label"
                                 for="password">
-                            <svg aria-hidden="true" class="lucide lucide-lock w-4 h-4 text-gray-400"
-                                 fill="none"
-                                 height="24" stroke="currentColor" stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24"
-                                 width="24" xmlns="http://www.w3.org/2000/svg">
-                                <rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                            <span>Strong Password</span></label><input
-                                class="file:text-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-slate-700/70 border-slate-600/70 text-white placeholder:text-gray-400 focus:border-teal-400 focus:ring-teal-400/20"
-                                data-slot="input"
-                                id="password"
-                                placeholder="Create a strong password"
-                                required=""
-                                type="password" value=""></div>
-                        <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive hover:bg-primary/90 h-10 rounded-md px-6 has-[&gt;svg]:px-4 w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-600 hover:to-blue-700 text-white shadow-lg shadow-teal-500/30 transition-all duration-300 transform hover:scale-[1.02]"
+                            <span>Strong Password</span></label>
+                            <div class="relative">
+                                <input
+                                        class="dark:bg-input/30 pr-9 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-slate-700/70 border-slate-600/70 text-white placeholder:text-gray-400 focus:border-teal-400 focus:ring-teal-400/20"
+                                        data-slot="input"
+                                        id="password"
+                                        placeholder="Create a strong password"
+                                        type="password">
+                                <img alt="Show Password"
+                                     class="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2"
+                                     src="assets/eye.svg"/>
+                            </div>
+
+                        </div>
+                        <button class="w-full h-9 bg-teal-400 disabled:pointer-events-none disabled:opacity-50 hover:bg-teal-500 text-gray-800 cursor-pointer rounded-md"
                                 data-slot="button"
-                                type="submit">Create My Secure Account
+                                type="submit">
+                            Create My Secure Account
                         </button>
                     </form>
                     <div class="text-center"><p class="text-gray-400">Already have an account? <a
@@ -153,15 +130,7 @@
                     </p></div>
                     <div class="pt-4 border-t border-slate-600/50">
                         <div class="flex items-center justify-center space-x-2 text-sm text-gray-400">
-                            <svg aria-hidden="true" class="lucide lucide-lock w-4 h-4 text-emerald-400"
-                                 fill="none"
-                                 height="24" stroke="currentColor" stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="2" viewBox="0 0 24 24"
-                                 width="24" xmlns="http://www.w3.org/2000/svg">
-                                <rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
+                            <img alt="lock " src="assets/greenLock.svg">
                             <span>Your data is fully encrypted. Only you control your account.</span></div>
                     </div>
                 </div>
