@@ -13,8 +13,10 @@ const button = document.getElementById("submitButton");
 const nameContainer = document.getElementById("nameContainer");
 const usernameLabel = document.getElementById("usernameLabel");
 const passwordLabel = document.getElementById("passwordLabel");
+const subHeading = document.getElementById("subHeading");
+
 let isLogin;
-setLogin(location.search.includes("login"));
+setLogin(location.search.includes("login"), !location.search.includes("login"));
 
 form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -144,13 +146,19 @@ function navigate(event) {
     }
 }
 
-function setLogin(value) {
+function setLogin(value, initialLoad) {
+    if (initialLoad) {
+        isLogin = value;
+        return;
+    }
+    
     form.reset();
     isLogin = value;
     updateUi(isLogin);
 }
 
 function updateUi(login) {
+    console.log("Updating ui");
     heading.innerText = login ? "Welcome Back" : "Create Your Secure Account";
     usernameLabel.innerText = login ? "Username" : "Unique Username";
     usernameInput.placeholder = login ? "Enter a username" : "Create a unique username";
@@ -159,6 +167,7 @@ function updateUi(login) {
     button.innerText = login ? "Login" : "Create My Secure Account";
     bottom.innerText = `${login ? "Don't" : "Already"} have an account`;
     switchPage.innerText = login ? "Signup" : "Login";
+    subHeading.innerText = login ? "Smart way to interact with your loved once with more privacy" : ""
 
     if (login) {
         nameContainer.classList.add("hidden");
