@@ -6,8 +6,17 @@ const usernameError = document.getElementById("usernameError");
 const passwordInput = document.getElementById("password");
 const passwordError = document.getElementById("passwordError");
 const eye = document.getElementById("eye");
+const switchPage = document.getElementById("switchPage");
+const heading = document.getElementById("heading");
+const bottom = document.getElementById("bottomText");
+const button = document.getElementById("submitButton");
+const nameContainer = document.getElementById("nameContainer");
+const usernameLabel = document.getElementById("usernameLabel");
+const passwordLabel = document.getElementById("passwordLabel");
+let isLogin;
+setLogin(location.search.includes("login"));
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     nameInput.addEventListener("input", validateName);
@@ -19,7 +28,17 @@ form.addEventListener("submit", function (e) {
         return;
     }
 
-    console.log("Form Submitted");
+    let response = isLogin ? await login() : await signup();
+
+    if (response.ok) {
+        nameInput.removeEventListener("input", validateName);
+        usernameInput.removeEventListener("input", validateUsername);
+        passwordInput.removeEventListener("input", validatePassword);
+        alert("Login successfully");
+        return;
+    }
+
+    alert("Combination of username and password is incorrect.");
 });
 
 eye.addEventListener("click", function () {
@@ -32,6 +51,10 @@ eye.addEventListener("click", function () {
     }
 });
 
+switchPage.addEventListener("click", function (e) {
+    navigate(e);
+
+});
 
 function validateForm() {
     let nameValidated = validateName();
@@ -42,14 +65,17 @@ function validateForm() {
 
 function validate(value, name, regex, regexError, min = 2, max = 30) {
     if (!value) return `${name} is required`;
-    else if (value.length < min) return `Please enter at least ${min} characters`;
-    else if (value.length > max) return `${name} should not be longer than ${max} characters`;
-    else if (!value.match(regex)) return regexError;
+    else if (!isLogin && value.length < min) return `Please enter at least ${min} characters`;
+    else if (!isLogin && value.length > max) return `${name} should not be longer than ${max} characters`;
+    else if (!isLogin && !value.match(regex)) return regexError;
 
     return null;
 }
 
 function validateName() {
+    if (isLogin) return true;
+
+    console.log("Validating name");
     const value = nameInput.value.trim();
     const msg = validate(value, "Name", /^[A-Za-z ]+$/, "Only english characters are allowed", 2, 40);
 
@@ -64,6 +90,7 @@ function validateName() {
 
 function validateUsername() {
     const value = usernameInput.value.trim();
+
     const msg = validate(value, "Username", /^[A-Za-z][A-Za-z0-9._]{2,}$/, "Only letters, numbers, . or _, must start with a letter.");
 
     if (msg) {
@@ -77,7 +104,8 @@ function validateUsername() {
 
 function validatePassword() {
     const value = passwordInput.value.trim();
-    const msg = validate(value, "Password", /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,20}$/, "Weak Password", 0, 100);
+
+    const msg = validate(value, "Password", /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$/, "Weak Password", 0, 100);
 
     if (msg) {
         showError(passwordInput, passwordError, msg);
@@ -103,4 +131,64 @@ function hideError(inputElement, errorElement) {
 
     errorElement.classList.add("hidden");
     errorElement.classList.remove("inline");
+}
+
+function navigate(event) {
+    event.preventDefault();
+    if (isLogin) {
+        window.history.pushState({}, "bs", "?type=signup");
+        setLogin(false);
+    } else {
+        setLogin(true);
+        window.history.pushState({}, "", "?type=login");
+    }
+}
+
+function setLogin(value) {
+    form.reset();
+    isLogin = value;
+    updateUi(isLogin);
+}
+
+function updateUi(login) {
+    heading.innerText = login ? "Welcome Back" : "Create Your Secure Account";
+    usernameLabel.innerText = login ? "Username" : "Unique Username";
+    usernameInput.placeholder = login ? "Enter a username" : "Create a unique username";
+    passwordLabel.innerText = login ? "Password" : "Strong Password";
+    passwordInput.placeholder = login ? "Enter your password" : "Create a strong  Password";
+    button.innerText = login ? "Login" : "Create My Secure Account";
+    bottom.innerText = `${login ? "Don't" : "Already"} have an account`;
+    switchPage.innerText = login ? "Signup" : "Login";
+
+    if (login) {
+        nameContainer.classList.add("hidden");
+    } else {
+        nameContainer.classList.remove("hidden");
+    }
+}
+
+async function signup() {
+    let name = nameInput.value.trim();
+    let username = usernameInput.value.trim();
+    let password = passwordInput.value.trim();
+
+    return {
+        ok: true,
+    }
+}
+
+async function login() {
+    let username = usernameInput.value.trim();
+    let password = passwordInput.value.trim();
+
+    if (username.match(/^[A-Za-z][A-Za-z0-9._]{2,}$/) && username === "john"
+        && password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!])[A-Za-z\d@#$%^&+=!]{8,}$/) && password === "John@123") {
+        return {
+            ok: true,
+        }
+    }
+
+    return {
+        ok: false,
+    }
 }
