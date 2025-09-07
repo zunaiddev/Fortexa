@@ -86,12 +86,12 @@
                             </label>
                             <div>
                                 <input
-                                        class="flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-slate-700/70 border-slate-600/70 text-white placeholder:text-gray-400 focus:border-teal-400"
+                                        autocomplete="name"
+                                        class="flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring bg-slate-700/70 border-slate-600/70 text-white placeholder:text-gray-400 focus:border-teal-400"
                                         data-slot="input"
-                                        id="name"
-                                        placeholder="Enter your full name"
+                                        id="name" placeholder="Enter your full name"
                                         type="text">
-                                <small class="text-red-500 ml-1 hidden" id="nameError">Invalid name</small>
+                                <small class="text-red-500 ml-1 hidden" id="nameError"></small>
                             </div>
                         </div>
                         <div class="space-y-2">
@@ -108,7 +108,7 @@
                                         id="username"
                                         placeholder="Choose a unique username"
                                         type="text">
-                                <small class="text-red-500 ml-1 hidden" id="usernameError">Invalid name</small>
+                                <small class="text-red-500 ml-1 hidden" id="usernameError"></small>
                             </div>
                         </div>
                         <div class="space-y-3"><label
@@ -127,10 +127,23 @@
                                             type="password">
                                     <img alt="Show Password"
                                          class="cursor-pointer absolute right-2 top-1/2 -translate-y-1/2"
+                                         id="eye"
                                          src="assets/eye.svg"/>
                                 </div>
-                                <small class="text-red-500 ml-1 hidden" id="passwordError">Invalid name</small>
+                                <!--                                <div class="mt-2 w-full">-->
+                                <!--                                    <div class="flex justify-between items-center mb-1">-->
+                                <!--                                        <span class="text-gray-400 text-sm">Password Strength</span>-->
+                                <!--                                        <span class="text-red-400 text-sm">Weak</span>-->
+                                <!--                                    </div>-->
 
+                                <!--                                    <div class="w-full h-2 bg-gray-600 rounded-md overflow-hidden">-->
+                                <!--                                        <div class="bg-green-500 h-full w-1/4"></div>-->
+                                <!--                                    </div>-->
+
+                                <!--                                </div>-->
+
+
+                                <small class="text-red-500 ml-1 hidden" id="passwordError"></small>
                             </div>
 
                         </div>
